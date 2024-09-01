@@ -183,12 +183,14 @@ uint32_t srsran::buff_size_field_to_bytes(size_t buff_size_index, bsr_format for
     case bsr_format::SHORT_TRUNC_BSR: {
       const size_t   idx    = std::min(buff_size_index, buffer_size_levels_5bit.size() - 1);
       const uint32_t offset = buff_size_index >= buffer_size_levels_5bit.size() - 1 ? max_offset : 0;
+      srslog::fetch_basic_logger("MAC").info("BSR buffer size={}",buffer_size_levels_5bit[idx] + offset);  // EXPERIMENTAL: log the BSR reported buffer size.
       return buffer_size_levels_5bit[idx] + offset;
     } break;
     case bsr_format::LONG_BSR:
     case bsr_format::LONG_TRUNC_BSR: {
       const size_t   idx    = std::min(buff_size_index, buffer_size_levels_8bit.size() - 1);
       const uint32_t offset = buff_size_index >= buffer_size_levels_8bit.size() - 1 ? max_offset : 0;
+      srslog::fetch_basic_logger("MAC").info("BSR size={}",buffer_size_levels_8bit[idx] + offset);  // EXPERIMENTAL: log the BSR reported buffer size.
       return buffer_size_levels_8bit[idx] + offset;
     } break;
     default:
