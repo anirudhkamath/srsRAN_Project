@@ -296,6 +296,7 @@ private:
   /// \param sdu_size The size of the SDU.
   void state_add(uint32_t sdu_size)
   {
+    logger.log_info("Adding RLC SDU of size={} to the atomic queue state", sdu_size);    
     uint64_t state_change = static_cast<uint64_t>(1U) << 32U | sdu_size;
     state.fetch_add(state_change, std::memory_order_relaxed);
   }
