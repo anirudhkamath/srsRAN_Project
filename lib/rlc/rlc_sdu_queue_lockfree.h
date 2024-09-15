@@ -105,6 +105,7 @@ public:
     }
 
     // update totals
+    logger.log_info("Wrote RLC SDU pdcp_sn={} to RLC queue", pdcp_sn);
     state_add(sdu_size);
     return true;
   }
